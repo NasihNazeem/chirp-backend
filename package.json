@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon server",
-    "migrate": "node migrate.js"
+    "migrate": "node ./database/migrate.js"
   },
   "keywords": [],
   "author": "",
