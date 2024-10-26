@@ -1,13 +1,13 @@
 const Pool = require("pg").Pool;
 require("dotenv").config();
 
-const pool = new Pool({
-  user: process.env.DB_USERNAME,
-  host: process.env.DB_HOSTNAME,
-  database: process.env.DB_NAME,
-  // Create a file called .env and create a variable with your password inside it (ie. DB_PASSWORD = "yourpassword")
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-});
+const poolConfig = {
+  max: 5,
+  min: 2,
+  idleTimeoutMillis: 600000,
+  connectionString: process.env.DB_URL + "?sslmode=prefer",
+};
+
+const pool = new Pool(poolConfig);
 
 module.exports = pool;
