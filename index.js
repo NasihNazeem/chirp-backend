@@ -35,7 +35,7 @@ const currentUserCheck = async (req, res, next) => {
     try {
       const accessToken = req.headers.authorization.split(" ")[1];
       const response = await axios.get(
-        "https://dev-gxkwzphy3vwb5jqh.us.auth0.com/userinfo",
+        `https://${process.env.AUTH0_DOMAIN}/userinfo`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
