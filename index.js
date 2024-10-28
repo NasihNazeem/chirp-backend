@@ -67,6 +67,8 @@ const currentUserCheck = async (req, res, next) => {
   next();
 };
 
+console.log(process.env.CLIENT_ORIGIN_URL);
+
 app.use("/api/users", verifyJwt, currentUserCheck, userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/profile", profileRoute);
