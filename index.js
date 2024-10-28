@@ -1,4 +1,5 @@
 // Imports
+require("dotenv").config();
 const axios = require("axios");
 const cors = require("cors");
 const express = require("express");
@@ -56,7 +57,7 @@ const currentUserCheck = async (req, res, next) => {
 
 const app = express();
 const port = process.env.SERVER_PORT || 3001;
-require("dotenv").config();
+console.log("AUTH0_AUDIENCE:", process.env.AUTH0_AUDIENCE);
 
 app.use(express.json());
 app.use(cors());
