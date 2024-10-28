@@ -59,7 +59,7 @@ const port = process.env.SERVER_PORT || 3001;
 require("dotenv").config();
 
 app.use(express.json());
-app.use(cors({ origin: process.env.CLIENT_ORIGIN_URL }));
+app.use(cors());
 
 app.use("/api/users", verifyJwt, currentUserCheck, userRoute);
 app.use("/api/posts", postRoute);
