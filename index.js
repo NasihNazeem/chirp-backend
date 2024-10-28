@@ -13,6 +13,18 @@ const profileRoute = require("./routes/profileRoutes");
 const messagesRoute = require("./routes/messagesRoutes");
 const followRoute = require("./routes/followRoutes");
 
+const app = express();
+const port = process.env.SERVER_PORT || 3001;
+
+app.use(express.json());
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN_URL,
+    headers: ["Authorization", "Content-Type"],
+    credentials: true,
+  })
+);
+
 const verifyJwt = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
@@ -54,18 +66,6 @@ const currentUserCheck = async (req, res, next) => {
   }
   next();
 };
-
-const app = express();
-const port = process.env.SERVER_PORT || 3001;
-
-app.use(express.json());
-app.use(
-  cors({
-    origin: process.env.CLIENT_ORIGIN_URL,
-    headers: ["Authorization", "Content-Type"],
-    credentials: true,
-  })
-);
 
 app.use("/api/users", verifyJwt, currentUserCheck, userRoute);
 app.use("/api/posts", postRoute);
