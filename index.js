@@ -58,6 +58,7 @@ const currentUserCheck = async (req, res, next) => {
 const app = express();
 const port = process.env.SERVER_PORT || 3001;
 console.log("AUTH0_AUDIENCE:", process.env.AUTH0_AUDIENCE);
+console.log("AUTH0_AUDIENCE:", process.env.AUTH0_DOMAIN);
 
 app.use(express.json());
 app.use(cors());
