@@ -19,8 +19,6 @@ const port = process.env.SERVER_PORT || 3001;
 app.use(express.json());
 app.use(cors());
 
-console.log(process.env.DB_URL);
-
 const verifyJwt = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
@@ -62,8 +60,6 @@ const currentUserCheck = async (req, res, next) => {
   }
   next();
 };
-
-console.log("client url: ", process.env.CLIENT_ORIGIN_URL);
 
 app.use("/api/users", verifyJwt, currentUserCheck, userRoute);
 app.use("/api/posts", postRoute);
