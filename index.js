@@ -19,6 +19,8 @@ const port = process.env.SERVER_PORT || 3001;
 app.use(express.json());
 app.use(cors());
 
+console.log(process.env.DB_URL);
+
 const verifyJwt = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
