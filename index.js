@@ -16,8 +16,8 @@ const followRoute = require("./routes/followRoutes");
 const app = express();
 const port = process.env.SERVER_PORT || 3001;
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 const verifyJwt = jwt({
   secret: jwks.expressJwtSecret({
